@@ -1,1 +1,194 @@
+@import "tailwindcss";
+@source "../index.html";
+@source "../app.js";
 
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f3f4f6;
+    background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+.loader {
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #3b82f6;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+.slide-up {
+    animation: slideUp 0.3s ease-out forwards;
+}
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes blinkRed {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+.blink-red {
+    background-color: #dc2626;
+    animation: blinkRed 1s linear infinite;
+}
+.help-content {
+    background: linear-gradient(180deg, #eff6ff 0%, #ffffff 60%, #f5f3ff 100%);
+    border-radius: 0.75rem;
+    color: #1f2937;
+    line-height: 1.7;
+    font-size: 0.875rem;
+}
+.help-content h1 {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #1d4ed8;
+    margin: 0 0 0.5rem;
+    text-align: center;
+}
+.help-content h2 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #1e40af;
+    margin: 1.25rem 0 0.5rem;
+    padding-bottom: 0.25rem;
+    border-bottom: 2px solid #dbeafe;
+}
+.help-content h3 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #4338ca;
+    margin: 1.1rem 0 0.4rem;
+}
+.help-content p {
+    margin: 0.55rem 0;
+}
+.help-content ul,
+.help-content ol {
+    margin: 0.55rem 0 0.55rem 1.25rem;
+}
+.help-content ul {
+    list-style: disc;
+}
+.help-content ol {
+    list-style: decimal;
+}
+.help-content li {
+    margin: 0.3rem 0;
+}
+.help-content blockquote {
+    background: #eef2ff;
+    border-left: 4px solid #6366f1;
+    border-radius: 0 0.5rem 0.5rem 0;
+    padding: 0.6rem 0.9rem;
+    margin: 0.9rem 0;
+    color: #3730a3;
+    font-style: italic;
+}
+.help-content strong {
+    color: #0f172a;
+}
+.help-content p:last-child {
+    margin-bottom: 0;
+}
+@page {
+    margin: 1cm;
+    @bottom-center {
+        content: "Hal: " counter(page) "/" counter(pages);
+        font-size: 10px;
+        color: #444;
+    }
+}
+@media print {
+    html, body {
+        height: auto !important;
+    }
+    body.printing-report,
+    body.printing-students,
+    body.printing-history {
+        display: block !important;
+        min-height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: #fff !important;
+        background-image: none !important;
+    }
+    body.printing-report > *:not(#reportPrintArea) {
+        display: none !important;
+    }
+    body.printing-report #reportPrintArea {
+        display: block !important;
+        padding: 0;
+    }
+    body.printing-students > *:not(#studentPrintArea) {
+        display: none !important;
+    }
+    body.printing-students #studentPrintArea {
+        display: block !important;
+        padding: 0;
+    }
+    body.printing-history > *:not(#historyPrintArea) {
+        display: none !important;
+    }
+    body.printing-history #historyPrintArea {
+        display: block !important;
+        padding: 0;
+    }
+    #printReportTable,
+    #printReportAbsentTable,
+    #printStudentTable,
+    #printHistoryTable {
+        width: 100% !important;
+        table-layout: fixed !important;
+        border-collapse: collapse !important;
+    }
+    #printReportTable th,
+    #printReportTable td,
+    #printReportAbsentTable th,
+    #printReportAbsentTable td,
+    #printStudentTable th,
+    #printStudentTable td,
+    #printHistoryTable th,
+    #printHistoryTable td {
+        border: 1px solid #999 !important;
+        padding: 6px !important;
+        text-align: center !important;
+        vertical-align: middle !important;
+        white-space: normal !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+        word-break: break-word !important;
+    }
+    #printHistoryTable th:nth-child(1) { width: 7% !important; }
+    #printHistoryTable th:nth-child(2) { width: 28% !important; }
+    #printHistoryTable th:nth-child(3) { width: 10% !important; }
+    #printHistoryTable th:nth-child(4) { width: 20% !important; }
+    #printHistoryTable th:nth-child(5) { width: 25% !important; }
+    #printHistoryTable th:nth-child(6) { width: 10% !important; }
+    #printHistoryTable td:nth-child(4),
+    #printHistoryTable td:nth-child(5) { text-align: left !important; }
+    #printHistoryTable td:nth-child(2) { text-align: left !important; }
+    #printReportTable th:nth-child(1) { width: 5% !important; }
+    #printReportTable th:nth-child(2) { width: 22% !important; }
+    #printReportTable th:nth-child(3) { width: 8% !important; }
+    #printReportTable th:nth-child(4) { width: 9% !important; }
+    #printReportTable th:nth-child(5) { width: 14% !important; }
+    #printReportTable th:nth-child(6) { width: 17% !important; }
+    #printReportTable th:nth-child(7) { width: 14% !important; }
+    #printReportTable th:nth-child(8) { width: 11% !important; }
+    #printReportAbsentTable th:nth-child(1) { width: 6% !important; }
+    #printReportAbsentTable th:nth-child(2) { width: 30% !important; }
+    #printReportAbsentTable th:nth-child(3) { width: 10% !important; }
+    #printReportAbsentTable th:nth-child(4) { width: 12% !important; }
+    #printReportAbsentTable th:nth-child(5) { width: 42% !important; }
+    #printReportAbsentTable td:nth-child(5) { text-align: left !important; }
+    #printStudentTable th:nth-child(1) { width: 8% !important; }
+    #printStudentTable th:nth-child(2) { width: 52% !important; }
+    #printStudentTable th:nth-child(3) { width: 12% !important; }
+    #printStudentTable th:nth-child(4) { width: 18% !important; }
+    #printStudentTable th:nth-child(5) { width: 10% !important; }
+    #printStudentTable td:nth-child(2) { text-align: left !important; }
+}
